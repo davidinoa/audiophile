@@ -7,7 +7,7 @@ export default async function Home() {
   const hello = await api.post.hello.query({ text: 'from tRPC' })
 
   return (
-    <main className="bg-eclipse-black flex min-h-screen flex-col items-center justify-center text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-eclipse-black text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
           Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
@@ -18,7 +18,7 @@ export default async function Home() {
             href="https://create.t3.gg/en/usage/first-steps"
             target="_blank"
           >
-            <h3 className="text-peachy-sunset text-2xl font-bold">
+            <h3 className="text-2xl font-bold text-peachy-sunset">
               First Steps →
             </h3>
             <div className="text-lg">
@@ -39,9 +39,7 @@ export default async function Home() {
           </Link>
         </div>
         <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl text-white">
-            {hello ? hello.greeting : 'Loading tRPC query...'}
-          </p>
+          <p className="text-2xl text-white">{hello.greeting}</p>
         </div>
 
         <CrudShowcase />
