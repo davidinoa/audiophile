@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import '~/styles/globals.css'
 import { TRPCReactProvider } from '~/trpc/react'
 import { manrope } from './ui/fonts'
+import Footer from './ui/footer'
 import Header from './ui/header'
 
 export const metadata = {
@@ -16,11 +17,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${manrope.variable} antialiased`}>
+    <html lang="en" className={`${manrope.className} antialiased`}>
+      <body>
         <TRPCReactProvider cookies={cookies().toString()}>
           <Header />
           {children}
+          <Footer />
         </TRPCReactProvider>
       </body>
     </html>

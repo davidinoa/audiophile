@@ -10,6 +10,8 @@ const config = {
     'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
     'kentcdodds',
+    'kentcdodds/react',
+    'kentcdodds/jsx-a11y',
   ],
   rules: {
     // These opinionated rules are enabled in stylistic-type-checked above.
@@ -31,6 +33,7 @@ const config = {
         checksVoidReturn: { attributes: false },
       },
     ],
+    'jsx-a11y/control-has-associated-label': 'error',
     'new-cap': 'off',
   },
 }

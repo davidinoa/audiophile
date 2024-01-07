@@ -16,6 +16,10 @@ export default {
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
+      fontSize: {
+        'xs-plus': '0.8125rem',
+        'sm-plus': '0.9375rem',
+      },
     },
   },
   plugins: [],
