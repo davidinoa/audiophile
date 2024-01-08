@@ -33,6 +33,12 @@ const config = {
         checksVoidReturn: { attributes: false },
       },
     ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        allowModules: ['@nextui-org/*'],
+      },
+    ],
     'jsx-a11y/control-has-associated-label': 'error',
     'new-cap': 'off',
   },

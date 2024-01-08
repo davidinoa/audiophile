@@ -8,7 +8,7 @@ export default async function Home() {
   const hello = await api.post.hello.query({ text: 'from tRPC' })
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-eclipse-black/10 text-white">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-700 text-white">
       <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
           Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
@@ -27,7 +27,8 @@ export default async function Home() {
               database and authentication.
             </div>
           </Link>
-          <Button>NextUI Button</Button>
+          <Button>see product</Button>
+          <Button intent="secondary">see product</Button>
           <Link
             className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
             href="https://create.t3.gg/en/introduction"
