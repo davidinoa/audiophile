@@ -1,8 +1,7 @@
-import Link from 'next/link'
-
-import { CreatePost } from '~/app/_components/create-post'
+import { CreatePost } from '~/app/components/create-post'
 import { api } from '~/trpc/server'
-import Button from './ui/button'
+import Button from './components/shared/button'
+import Link from './components/shared/link'
 
 export default async function Home() {
   const hello = await api.post.hello.query({ text: 'from tRPC' })
@@ -27,8 +26,8 @@ export default async function Home() {
               database and authentication.
             </div>
           </Link>
-          <Button>see product</Button>
-          <Button intent="secondary">see product</Button>
+          <Button href="/headphones">see product</Button>
+          <Button variant="secondary">see product</Button>
           <Link
             className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
             href="https://create.t3.gg/en/introduction"
