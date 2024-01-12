@@ -55,3 +55,17 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+.content-grid {
+  --padding-inline: 1.5rem;
+
+  padding-inline: var(--padding-inline);
+  display: grid;
+  grid-template-columns:
+    1fr [content-start]
+    min(70rem, 100%) [content-end] 1fr;
+
+  > * {
+    grid-column: content;
+  }
+}
