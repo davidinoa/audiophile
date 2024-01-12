@@ -7,7 +7,7 @@ import Link from './shared/link'
 
 export default function Header() {
   return (
-    <header className="grid-container | sticky top-0 z-50 bg-eclipse-black font-bold text-white md:px-6">
+    <header className="grid-container | sticky top-0 z-50 bg-eclipse-black font-bold text-white md:px-10">
       <h1 className="sr-only">Audiophile</h1>
       <div className="header-grid | border-b border-white/10 px-6 py-8 md:px-0 lg:py-9">
         <Button
