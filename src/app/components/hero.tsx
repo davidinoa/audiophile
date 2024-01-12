@@ -1,22 +1,8 @@
-import {
-  StaticImageData,
-  unstable_getImgProps as getImgProps,
-} from 'next/image'
 import desktopImage from '~/assets/images/desktop/hero.jpg'
 import mobileImage from '~/assets/images/mobile/hero.jpg'
 import tabletImage from '~/assets/images/tablet/hero.jpg'
 import Button from './shared/button'
-
-function getImageProps(src: StaticImageData) {
-  return getImgProps({
-    src,
-    fill: true,
-    sizes: '100vw',
-    placeholder: 'blur',
-    alt: 'XX99 Mark II headphones',
-    className: 'object-cover object-bottom opacity-50',
-  }).props
-}
+import ResponsiveImage from './shared/responsive-image'
 
 export default function Hero() {
   return (
@@ -38,17 +24,18 @@ export default function Hero() {
           See Product
         </Button>
       </div>
-      <picture>
-        <source
-          media="(min-width: 1024px)"
-          srcSet={getImageProps(desktopImage).srcSet}
-        />
-        <source
-          media="(min-width: 768px)"
-          srcSet={getImageProps(tabletImage).srcSet}
-        />
-        <img {...getImageProps(mobileImage)} />
-      </picture>
+      <ResponsiveImage
+        desktopImg={desktopImage}
+        tabletImg={tabletImage}
+        mobileImg={mobileImage}
+        commonImgProps={{
+          fill: true,
+          sizes: '100vw',
+          placeholder: 'blur',
+          alt: 'XX99 Mark II headphones',
+          className: 'object-cover object-bottom opacity-50',
+        }}
+      />
     </section>
   )
 }

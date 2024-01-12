@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  min-width: 20rem;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 1fr [content-start] min(70rem, 100%) [content-end] 1fr;
