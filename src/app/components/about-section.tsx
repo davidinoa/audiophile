@@ -1,7 +1,7 @@
 import desktopImage from '~/assets/images/desktop/about-section.jpg'
 import mobileImage from '~/assets/images/mobile/about-section.jpg'
 import tabletImage from '~/assets/images/tablet/about-section.jpg'
-import ResponsiveImage from './responsive-image'
+import ResponsiveImage from './shared/responsive-image'
 
 export default function AboutSection() {
   return (

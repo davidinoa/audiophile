@@ -1,6 +1,6 @@
+import AboutSection from './components/about-section'
 import CategoryNavigation from './components/category-navigation'
 import Hero from './components/hero'
-import AboutSection from './components/shared/about-section'
 
 export default async function Home() {
   return (
