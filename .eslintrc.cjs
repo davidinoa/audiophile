@@ -9,9 +9,7 @@ const config = {
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
-    'kentcdodds',
-    'kentcdodds/react',
-    'kentcdodds/jsx-a11y',
+    'davidinoa',
   ],
   rules: {
     // These opinionated rules are enabled in stylistic-type-checked above.
@@ -33,14 +31,13 @@ const config = {
         checksVoidReturn: { attributes: false },
       },
     ],
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        allowModules: ['@nextui-org/*'],
-      },
-    ],
+    'import/no-extraneous-dependencies': 'off',
+    'import/prefer-default-export': 'warn',
     'jsx-a11y/control-has-associated-label': 'error',
     'new-cap': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/require-default-props': 'off',
   },
 }
 

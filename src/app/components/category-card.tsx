@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 import RightArrowIcon from '~/assets/svgs/icon-arrow-right.svg'
 import Link from './shared/link'
 
@@ -27,7 +27,10 @@ export default function CategoryCard({ name, thumbnail }: Props) {
         <h3 className="tracking-[1px]text-sm-plus font-bold uppercase leading-snug tracking-[1px]">
           {name}
         </h3>
-        <button className="flex items-center gap-2 text-[0.8125rem] font-bold uppercase leading-none tracking-[1px] text-black/50 hover:text-copper-canyon group-hover:text-copper-canyon">
+        <button
+          type="button"
+          className="flex items-center gap-2 text-[0.8125rem] font-bold uppercase leading-none tracking-[1px] text-black/50 hover:text-copper-canyon group-hover:text-copper-canyon"
+        >
           Shop <RightArrowIcon />
         </button>
       </div>

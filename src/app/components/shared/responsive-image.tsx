@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/alt-text */
 import {
-  ImageProps,
-  StaticImageData,
   unstable_getImgProps as getImgProps,
+  type ImageProps,
+  type StaticImageData,
 } from 'next/image'
 
 type Props = {

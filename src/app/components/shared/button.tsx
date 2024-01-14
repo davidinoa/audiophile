@@ -1,8 +1,8 @@
 import {
   Button as NextUiButton,
-  ButtonProps as NextUiButtonProps,
+  type ButtonProps as NextUiButtonProps,
 } from '@nextui-org/button'
-import { VariantProps, cva } from 'class-variance-authority'
+import { type VariantProps, cva } from 'class-variance-authority'
 import Link from 'next/link'
 import { forwardRef } from 'react'
 import { mergeClassNames } from '~/lib/utils'

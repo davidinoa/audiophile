@@ -1,5 +1,5 @@
 import { Link as NextUiLink } from '@nextui-org/link'
-import { VariantProps, cva } from 'class-variance-authority'
+import { type VariantProps, cva } from 'class-variance-authority'
 import NextLink from 'next/link'
 import { mergeClassNames } from '~/lib/utils'
 
