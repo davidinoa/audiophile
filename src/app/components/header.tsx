@@ -17,7 +17,7 @@ export default function Header() {
         >
           <HamburgerIcon />
         </Button>
-        <Link href="/">
+        <Link href="/" className="flex">
           <Logo aria-label="audiophile logo" />
         </Link>
         <MainNavigation className="hidden lg:block" />

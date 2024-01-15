@@ -33,7 +33,7 @@ export default function Link({
       {...props}
       href={href}
       className={mergeClassNames(
-        'group flex leading-none outline-none',
+        'group leading-none outline-none',
         isWrapper && className,
       )}
     >
