@@ -23,7 +23,7 @@ export default function CategoryCard({ name, thumbnail }: Props) {
         alt="headphones category thumbnail"
         className="z-10 col-start-1 row-span-2 row-start-1"
       />
-      <div className="col-start-1 row-span-2 row-start-2 grid h-[10.3125rem] w-full place-items-center content-end gap-4 rounded-md bg-frost-whisper pb-5 pt-20">
+      <div className="col-start-1 row-span-2 row-start-2 grid h-[10.3125rem] w-full place-items-center content-end gap-4 rounded-lg bg-frost-whisper pb-5 pt-20">
         <h3 className="tracking-[1px]text-sm-plus font-bold uppercase leading-snug tracking-[1px]">
           {name}
         </h3>

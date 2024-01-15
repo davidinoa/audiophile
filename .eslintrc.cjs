@@ -39,6 +39,7 @@ const config = {
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
   },
+  ignorePatterns: ['next.config.js', 'next-env.d.ts'],
 }
 
 module.exports = config

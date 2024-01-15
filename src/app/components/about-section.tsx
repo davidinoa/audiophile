@@ -5,7 +5,7 @@ import ResponsiveImage from './shared/responsive-image'
 
 export default function AboutSection() {
   return (
-    <section className="content-grid justify-items-center gap-y-8 pb-[7.5rem] pt-8">
+    <section className="justify-items-center gap-y-8 pb-[7.5rem] pt-8">
       <div className="grid w-full grid-flow-dense place-items-center gap-10 md:gap-16 lg:grid-cols-[27.8125rem_minmax(0,1fr)] lg:gap-32">
         <ResponsiveImage
           className="w-full lg:col-start-2"

@@ -1,5 +1,5 @@
 import { Link as NextUiLink } from '@nextui-org/link'
-import { type VariantProps, cva } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import NextLink from 'next/link'
 import { mergeClassNames } from '~/lib/utils'
 
@@ -33,7 +33,7 @@ export default function Link({
       {...props}
       href={href}
       className={mergeClassNames(
-        'group leading-none outline-none',
+        'group flex leading-none outline-none',
         isWrapper && className,
       )}
     >

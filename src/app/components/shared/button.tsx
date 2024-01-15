@@ -2,7 +2,7 @@ import {
   Button as NextUiButton,
   type ButtonProps as NextUiButtonProps,
 } from '@nextui-org/button'
-import { type VariantProps, cva } from 'class-variance-authority'
+import { cva, type VariantProps } from 'class-variance-authority'
 import Link from 'next/link'
 import { forwardRef } from 'react'
 import { mergeClassNames } from '~/lib/utils'
@@ -15,7 +15,9 @@ const styles = cva(
         primary:
           'border border-copper-canyon bg-copper-canyon text-white hover:border-peachy-sunset hover:bg-peachy-sunset rounded-none',
         secondary:
-          'border border-black bg-white text-black hover:bg-black hover:text-white rounded-none',
+          'border border-black bg-transparent text-black hover:bg-black hover:text-white rounded-none',
+        secondaryInverted:
+          'border border-black bg-black text-white hover:bg-transparent hover:text-black rounded-none',
         icon: 'bg-transparent p-1 data-[hover=true]:!opacity-80',
       },
     },
