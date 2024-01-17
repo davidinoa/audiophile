@@ -4,7 +4,7 @@ import NextLink from 'next/link'
 import { mergeClassNames } from '~/lib/utils'
 
 const styles = cva(
-  'group-focus:outline-focus group-focus:outline-offset-2 hover:opacity-100 group-hover:text-copper-canyon hover:text-copper-canyon',
+  'hover:opacity-100 group-hover:text-copper-canyon hover:text-copper-canyon',
   {
     variants: {
       variant: {
@@ -32,10 +32,7 @@ export default function Link({
     <NextLink
       {...props}
       href={href}
-      className={mergeClassNames(
-        'group leading-none outline-none',
-        isWrapper && className,
-      )}
+      className={mergeClassNames('group leading-none', isWrapper && className)}
     >
       {isWrapper ? (
         children

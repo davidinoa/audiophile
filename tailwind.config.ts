@@ -1,5 +1,6 @@
 import { nextui } from '@nextui-org/react'
 import { type Config } from 'tailwindcss'
+import tailwindAnimate from 'tailwindcss-animate'
 import { fontFamily } from 'tailwindcss/defaultTheme'
 
 export default {
@@ -28,6 +29,7 @@ export default {
   },
   darkMode: 'class',
   plugins: [
+    tailwindAnimate,
     nextui({
       themes: {
         light: {

@@ -7,9 +7,9 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-snow-drift">
       <Hero />
-      <div className="content-grid gap-y-28 pt-20">
+      <div className="content-grid gap-y-28 pt-10 md:pt-20">
         <section>
-          <CategoryNavigation className="grid gap-4 md:grid-cols-3" />
+          <CategoryNavigation />
         </section>
         <FeaturedSection />
         <AboutSection />

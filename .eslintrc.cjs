@@ -23,6 +23,7 @@ const config = {
         fixStyle: 'inline-type-imports',
       },
     ],
+    '@typescript-eslint/no-use-before-define': ['error', { functions: false }],
     '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
     '@typescript-eslint/require-await': 'off',
     '@typescript-eslint/no-misused-promises': [
@@ -34,6 +35,7 @@ const config = {
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'warn',
     'jsx-a11y/control-has-associated-label': 'error',
+    'react/jsx-no-bind': 'off',
     'new-cap': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',

@@ -29,6 +29,7 @@ export default function CategoryCard({ name, thumbnail }: Props) {
         </h3>
         <button
           type="button"
+          tabIndex={-1}
           className="flex items-center gap-2 text-[0.8125rem] font-bold uppercase leading-none tracking-[1px] text-black/50 hover:text-copper-canyon group-hover:text-copper-canyon"
         >
           Shop <RightArrowIcon />
