@@ -6,7 +6,7 @@ import ResponsiveImage from './shared/responsive-image'
 
 export default function Hero() {
   return (
-    <section className="grid-container | relative m-auto h-[32rem] grid-rows-1 bg-black p-6 text-white md:h-[40rem] md:p-10">
+    <section className="content-grid | relative m-auto h-[32rem] grid-rows-1 bg-black text-white md:h-[40rem]">
       <div className="relative z-10 m-auto grid h-full max-w-[22rem] content-center justify-items-center gap-6 text-center md:max-w-[24.75rem] lg:m-0 lg:justify-items-start lg:text-left">
         <div className="grid gap-4 md:gap-6">
           <p className="-mr-[10px] text-sm uppercase leading-snug tracking-[10px] opacity-50">

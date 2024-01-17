@@ -22,7 +22,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="grid-container | bg-eclipse-black px-6 py-12 text-white md:px-10 md:pb-11 md:pt-16">
+    <footer className="content-grid | bg-eclipse-black py-12 text-white  md:pb-11 md:pt-16">
       <div className="footer-grid | text-center">
         <Link href="/" className="flex">
           <Logo aria-label="audiophile logo" />

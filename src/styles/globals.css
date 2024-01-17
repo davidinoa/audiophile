@@ -6,16 +6,6 @@ body {
   min-width: 22rem;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr [content-start] min(70rem, 100%) [content-end] 1fr;
-}
-
-.grid-container > * {
-  grid-column: content;
-  width: 100%;
-}
-
 .header-grid {
   margin: auto;
   display: grid;
@@ -61,15 +51,27 @@ body {
 }
 
 .content-grid {
-  --padding-inline: 1.5rem;
+  --inline-padding: 1.5rem;
+  --content-width: min(70rem, calc(100% - (var(--inline-padding) * 2)));
 
-  padding-inline: var(--padding-inline);
   display: grid;
   grid-template-columns:
-    1fr [content-start]
-    min(70rem, 100%) [content-end] 1fr;
+    minmax(var(--inline-padding), 1fr) [content-start]
+    var(--content-width) [content-end]
+    minmax(var(--inline-padding), 1fr);
 
   > * {
     grid-column: content;
+    width: 100%;
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-grid {
+    --inline-padding: 2.5rem;
   }
 }
