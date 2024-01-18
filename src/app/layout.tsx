@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { cookies } from 'next/headers'
 import { manrope } from '~/lib/fonts'
 import '~/styles/globals.css'
@@ -27,6 +28,7 @@ export default function RootLayout({
             <Footer />
           </Providers>
         </TRPCReactProvider>
+        <SpeedInsights />
       </body>
     </html>
   )
