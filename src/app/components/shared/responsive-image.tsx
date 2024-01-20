@@ -4,11 +4,12 @@ import {
   type ImageProps,
   type StaticImageData,
 } from 'next/image'
+import { type ExternalImageData } from '~/lib/types'
 
 type Props = {
-  desktopImg: StaticImageData
-  tabletImg: StaticImageData
-  mobileImg: StaticImageData
+  desktopImg: StaticImageData | ExternalImageData
+  tabletImg: StaticImageData | ExternalImageData
+  mobileImg: StaticImageData | ExternalImageData
   commonImgProps: Omit<ImageProps, 'src'>
 } & React.ComponentProps<'picture'>
 

@@ -6,6 +6,15 @@
 await import('./src/env.js')
 
 const config = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/**',
+      },
+    ],
+  },
   webpack(config) {
     if (!config.module) {
       throw new Error('webpack config has no module property')

@@ -1,5 +1,12 @@
 import { type Category } from '~/lib/types'
 
+export const idToNameMap = {
+  'edc4479c-226d-4d71-8fad-b804ff6368c2': 'xx99-mark-ii',
+  'f9b0a3b9-9b39-4c9e-8a1b-7e3e0a9f5e87': 'xx99-mark-i',
+  'e2f4c4d1-3b6d-4de9-8f3c-8e3e0a9f5e87': 'xx59',
+  'f9b0a3b9-9b39-4c9e-8a1b-7e3e0a9f5e88': 'xx89',
+} as const
+
 const productsByCategory: ProductsByCategory = {
   headphones: [
     {
@@ -25,7 +32,8 @@ const productsByCategory: ProductsByCategory = {
   earphones: [
     {
       id: 'yx1',
-      name: 'YX1',
+      name: 'YX1 Wireless',
+      isNew: true,
       description:
         'Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.',
     },
@@ -34,6 +42,7 @@ const productsByCategory: ProductsByCategory = {
     {
       id: 'zx9',
       name: 'ZX9',
+      isNew: true,
       description:
         "Upgrade your sound system with the all new ZX9 active speaker. It's a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.",
     },
