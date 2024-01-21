@@ -8,7 +8,6 @@ import Link from './shared/link'
 export default function Header() {
   return (
     <header className="content-grid | sticky top-0 z-[60] bg-eclipse-black font-bold text-white">
-      <h1 className="sr-only">Audiophile</h1>
       <div className="header-grid | z-10 border-b border-white/10 py-8 md:px-0 lg:py-9">
         <MobileMenu />
         <Link href="/" className="flex">

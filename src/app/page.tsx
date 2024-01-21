@@ -6,6 +6,7 @@ import Hero from './components/hero'
 export default async function Home() {
   return (
     <main className="min-h-screen bg-snow-drift">
+      <h1 className="sr-only">Audiophile</h1>
       <Hero />
       <div className="content-grid gap-y-28 pt-10 md:pt-20">
         <section>
