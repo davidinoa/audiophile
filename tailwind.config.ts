@@ -10,6 +10,9 @@ export default {
   ],
   theme: {
     extend: {
+      aria: {
+        invalid: 'invalid="true"',
+      },
       colors: {
         'copper-canyon': '#D87D4A',
         'eclipse-black': '#101010',

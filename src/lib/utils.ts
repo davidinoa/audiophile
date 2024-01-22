@@ -31,3 +31,38 @@ export function generateResponsiveImageData({
     return acc
   }, {} as ResponsiveImageData)
 }
+
+export function formatPrice(priceInCents: number) {
+  const priceInDollars = priceInCents / 100
+  return priceInDollars.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  })
+}
+
+export const formatPhoneNumber = (input: string) => {
+  const digits = input.replace(/\D/g, '')
+  const validDigits =
+    digits.startsWith('1') || digits.startsWith('0') ? digits.slice(1) : digits
+
+  if (validDigits.length < 1) return ''
+
+  const finalDigits = validDigits.slice(0, 10)
+  const match = finalDigits.match(/^(\d{1,3})(\d{0,3})(\d{0,4})$/)
+
+  if (match) {
+    const [, areaCode, prefix, line] = match
+    if (line) {
+      return `(${areaCode}) ${prefix}-${line}`
+    }
+    if (prefix) {
+      return `(${areaCode}) ${prefix}`
+    }
+    if (areaCode) {
+      return `(${areaCode}`
+    }
+  }
+
+  return input
+}

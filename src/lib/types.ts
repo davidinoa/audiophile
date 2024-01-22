@@ -28,3 +28,7 @@ export function isProductId(key: string): key is ProductId {
 export function isCategory(value: string): value is Category {
   return CATEGORIES.some((category) => category === value)
 }
+
+export function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((item) => typeof item === 'string')
+}
