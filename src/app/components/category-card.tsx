@@ -10,7 +10,7 @@ type Props = {
 export default function CategoryCard({ name, thumbnail }: Props) {
   return (
     <Link
-      href={`${name}`}
+      href={`/${name}`}
       variant="wrapper"
       className="group grid justify-items-center"
       style={{
