@@ -75,3 +75,14 @@ body {
     --inline-padding: 2.5rem;
   }
 }
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  appearance: none;
+  -moz-appearance: textfield;
+}
