@@ -18,11 +18,15 @@ export default function useOutsideClick<
       }
     }
 
-    document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('touchstart', handleClickOutside)
+    if (window.matchMedia('(hover: none)').matches) {
+      document.addEventListener('touchstart', handleClickOutside)
+    } else {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
       document.removeEventListener('touchstart', handleClickOutside)
+      document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
 
