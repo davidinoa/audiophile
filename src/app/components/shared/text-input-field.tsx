@@ -22,7 +22,7 @@ function TextInputField(
         <span className="text-xs font-bold">{label}</span>
         <input
           ref={ref}
-          className="aria-invalid:border-crimson-tide aria-invalid:outline-crimson-tide rounded-lg border px-6 py-4 text-sm font-bold leading-none caret-copper-canyon outline-copper-canyon transition-colors"
+          className="aria-invalid:border-crimson-tide aria-invalid:outline-crimson-tide rounded-lg border px-6 py-4 text-sm font-bold leading-none caret-copper-canyon outline-copper-canyon transition-colors disabled:text-black/40"
           {...props}
           aria-invalid={Boolean(error)}
           onChange={(e) => {
