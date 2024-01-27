@@ -7,4 +7,4 @@ export const CLOUDINARY_BASE_URL =
 
 export const LG_BREAKPOINT = 1024
 
-export const MOBILE_MENU_ANIMATION_DURATION_MS = 300
+export const FADE_OUT_DURATION_MS = 300
