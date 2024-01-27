@@ -1,7 +1,9 @@
+import { Spinner } from '@nextui-org/spinner'
 import Button from './button'
 
 type Props<T> = {
   value: T
+  isLoading: boolean
   onChange: (value: T) => void
 }
 
@@ -11,14 +13,15 @@ const MAX_VALUE = 99
 
 export default function QuantityInput({
   value,
+  isLoading,
   onChange,
 }: Props<number | null>) {
   return (
-    <div className="relative inline-block">
+    <div className="relative block h-fit w-fit">
       <Button
         variant="icon"
         aria-label="Decrease quantity"
-        disabled={value === MIN_VALUE}
+        isDisabled={value === MIN_VALUE || isLoading}
         onPress={() =>
           onChange(value ? Math.max(MIN_VALUE, value - STEP) : MIN_VALUE)
         }
@@ -28,6 +31,12 @@ export default function QuantityInput({
       </Button>
       <label>
         <span className="sr-only">Quantity input</span>
+        {isLoading && (
+          <Spinner
+            color="default"
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          />
+        )}
         <input
           type="number"
           min={MIN_VALUE}
@@ -46,13 +55,15 @@ export default function QuantityInput({
             )
             return onChange(validatedValue)
           }}
-          className="w-[120px] bg-frost-whisper px-10 py-4 text-center text-xs-plus font-bold tabular-nums leading-none"
+          aria-busy={isLoading}
+          disabled={isLoading}
+          className="w-[120px] bg-frost-whisper px-10 py-4 text-center  font-bold tabular-nums leading-none disabled:text-black/50"
         />
       </label>
       <Button
         variant="icon"
         aria-label="Increase quantity"
-        disabled={value === MAX_VALUE}
+        isDisabled={value === MAX_VALUE || isLoading}
         onPress={() =>
           onChange(value ? Math.min(MAX_VALUE, value + STEP) : MIN_VALUE)
         }
