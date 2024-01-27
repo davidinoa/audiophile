@@ -1,7 +1,7 @@
 export function getLandmarkElements() {
   const body = document.querySelector('body')!
   const main = document.querySelector('main')!
-  const footer = document.querySelector('footer')!
+  const footer = document.querySelector('#app-footer')!
   return [body, main, footer] as const
 }
 
