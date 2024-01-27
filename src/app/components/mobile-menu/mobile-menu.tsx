@@ -2,12 +2,9 @@
 
 import { useRef, useState } from 'react'
 import HamburgerIcon from '~/assets/svgs/icon-hamburger.svg'
-import {
-  LG_BREAKPOINT,
-  MOBILE_MENU_ANIMATION_DURATION_MS,
-} from '~/lib/constants'
+import { FADE_OUT_DURATION_MS, LG_BREAKPOINT } from '~/lib/constants'
+import useOutsideClick from '~/lib/hooks/use-outside-click'
 import useEscapeKey from '~/lib/hooks/useEscapeKey'
-import useOutsideClick from '~/lib/hooks/useOutsideClick'
 import useWindowSize from '~/lib/hooks/useWindowSize'
 import { mergeClassNames } from '~/lib/utils'
 import CategoryNavigation from '../category-navigation'
@@ -33,7 +30,7 @@ export default function MobileMenu() {
   }
 
   function toggleMenu() {
-    const elementsWithExitAnimations = [ref.current, backdropRef.current]
+    const elementsWithExitAnimations = [ref, backdropRef]
 
     if (!isMenuOpen) {
       disableContentInteraction()
@@ -42,16 +39,16 @@ export default function MobileMenu() {
       enableContentInteraction()
       toggleExitAnimationClasses({
         isOpen: isMenuOpen,
-        elements: elementsWithExitAnimations,
+        elementRefs: elementsWithExitAnimations,
       })
 
       setTimeout(() => {
         toggleExitAnimationClasses({
           isOpen: !isMenuOpen,
-          elements: elementsWithExitAnimations,
+          elementRefs: elementsWithExitAnimations,
         })
         setIsMenuOpen(!isMenuOpen)
-      }, MOBILE_MENU_ANIMATION_DURATION_MS)
+      }, FADE_OUT_DURATION_MS)
     }
   }
 
@@ -67,6 +64,7 @@ export default function MobileMenu() {
       </Button>
       <div className="absolute left-0 top-[93px] lg:hidden">
         <dialog
+          id="mobile-menu-dialog"
           ref={ref}
           tabIndex={-1}
           open={isMenuOpen}

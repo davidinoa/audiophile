@@ -23,14 +23,14 @@ const exitAnimationClasses = ['animate-out', 'fade-out']
 
 export function toggleExitAnimationClasses({
   isOpen,
-  elements,
+  elementRefs,
 }: {
   isOpen: boolean
-  elements: Array<HTMLElement | null>
+  elementRefs: Array<React.RefObject<HTMLElement> | null>
 }) {
-  elements.forEach((element) =>
+  elementRefs.forEach((elementRef) =>
     isOpen
-      ? element?.classList.add(...exitAnimationClasses)
-      : element?.classList.remove(...exitAnimationClasses),
+      ? elementRef?.current?.classList.add(...exitAnimationClasses)
+      : elementRef?.current?.classList.remove(...exitAnimationClasses),
   )
 }
