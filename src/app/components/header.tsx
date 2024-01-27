@@ -1,8 +1,6 @@
-import CartIcon from '~/assets/svgs/icon-cart.svg'
 import Logo from '~/assets/svgs/logo.svg'
 import MainNavigation from './main-navigation'
-import MobileMenu from './mobile-menu'
-import Button from './shared/button'
+import MobileMenu from './mobile-menu/mobile-menu'
 import Link from './shared/link'
 
 export default function Header() {
@@ -14,13 +12,7 @@ export default function Header() {
           <Logo aria-label="audiophile logo" />
         </Link>
         <MainNavigation className="hidden lg:block" />
-        <Button
-          variant="icon"
-          aria-label="shopping cart icon"
-          className="-mr-1"
-        >
-          <CartIcon />
-        </Button>
+        {/* <Cart /> */}
       </div>
     </header>
   )
