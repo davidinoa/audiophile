@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import {
   unstable_getImgProps as getImgProps,
   type ImageProps,
@@ -6,10 +5,12 @@ import {
 } from 'next/image'
 import { type ExternalImageData } from '~/lib/types'
 
+type ImageData = StaticImageData | ExternalImageData
+
 type Props = {
-  desktopImg: StaticImageData | ExternalImageData
-  tabletImg: StaticImageData | ExternalImageData
-  mobileImg: StaticImageData | ExternalImageData
+  desktopImg: ImageData
+  tabletImg: ImageData
+  mobileImg: ImageData
   commonImgProps: Omit<ImageProps, 'src'>
 } & React.ComponentProps<'picture'>
 
@@ -20,21 +21,28 @@ export default function ResponsiveImage({
   mobileImg,
   commonImgProps,
 }: Props) {
-  function getImageProps(src: StaticImageData) {
+  function getImageProps(src: ImageData) {
     return getImgProps({ ...commonImgProps, src })
   }
+
+  const desktopProps = getImageProps(desktopImg).props
+  const tabletProps = getImageProps(tabletImg).props
 
   return (
     <picture className={className}>
       <source
         media="(min-width: 64rem)"
-        srcSet={getImageProps(desktopImg).props.srcSet}
+        srcSet={desktopProps.srcSet}
+        width={desktopProps.width}
+        height={desktopProps.height}
       />
       <source
         media="(min-width: 48rem)"
-        srcSet={getImageProps(tabletImg).props.srcSet}
+        srcSet={tabletProps.srcSet}
+        width={tabletProps.width}
+        height={tabletProps.height}
       />
-      <img {...getImageProps(mobileImg).props} />
+      <img {...getImageProps(mobileImg).props} alt={commonImgProps.alt} />
     </picture>
   )
 }
