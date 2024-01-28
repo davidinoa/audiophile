@@ -32,3 +32,7 @@ export function isCategory(value: string): value is Category {
 export function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === 'string')
 }
+
+export function isValidProductId(id: string): id is keyof typeof idToNameMap {
+  return id in idToNameMap
+}
