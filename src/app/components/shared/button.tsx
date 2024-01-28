@@ -8,7 +8,7 @@ import { forwardRef } from 'react'
 import { mergeClassNames } from '~/lib/utils'
 
 const styles = cva(
-  'h-fit w-fit min-w-fit px-8 py-4 text-xs lg:text-xs-plus font-bold uppercase leading-tight tracking-[1px] data-[hover=true]:!opacity-100 text-center',
+  'h-fit w-fit min-w-fit px-8 py-4 text-xs-plus font-bold uppercase leading-tight tracking-[1px] data-[hover=true]:!opacity-100 text-center',
   {
     variants: {
       variant: {

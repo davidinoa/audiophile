@@ -18,7 +18,8 @@ const styles = cva(
   },
 )
 
-type Props = VariantProps<typeof styles> & React.ComponentProps<typeof NextLink>
+export type Props = VariantProps<typeof styles> &
+  React.ComponentProps<typeof NextLink>
 
 export default function Link({
   href,
