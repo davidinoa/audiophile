@@ -3,6 +3,69 @@ import { z } from 'zod'
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
 const cartRouter = createTRPCRouter({
+  clearCart: publicProcedure
+    .input(z.object({ cartId: z.string() }))
+    .mutation(async ({ input, ctx }) => {
+      const { cartId } = input
+
+      try {
+        // Check if the cart exists
+        const cart = await ctx.db.cart.findUnique({
+          where: { id: cartId },
+        })
+
+        if (!cart) {
+          throw new TRPCError({
+            code: 'NOT_FOUND',
+            message: 'Cart not found',
+          })
+        }
+
+        // Delete all items from the cart
+        await ctx.db.cartItem.deleteMany({
+          where: { cartId: cart.id },
+        })
+
+        return { message: 'Cart cleared successfully' }
+      } catch (error) {
+        throw new TRPCError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'An error occurred while clearing the cart',
+        })
+      }
+    }),
+  getCart: publicProcedure
+    .input(z.object({ cartId: z.string() }))
+    .query(async ({ input, ctx }) => {
+      const { cartId } = input
+
+      try {
+        const cart = await ctx.db.cart.findUnique({
+          where: { id: cartId },
+          include: {
+            cartItems: {
+              include: {
+                product: true,
+              },
+            },
+          },
+        })
+
+        if (!cart) {
+          throw new TRPCError({
+            code: 'NOT_FOUND',
+            message: 'Cart not found',
+          })
+        }
+
+        return cart
+      } catch (error) {
+        throw new TRPCError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'An error occurred while retrieving the cart',
+        })
+      }
+    }),
   setItemQuantity: publicProcedure
     .input(
       z.object({

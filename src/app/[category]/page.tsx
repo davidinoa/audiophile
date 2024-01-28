@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
-import { isCategory } from '~/lib/types'
+import { isValidCategory } from '~/lib/types'
+import { api } from '~/trpc/server'
 import ProductPreview from '../components/product-preview'
-import productsByCategory from './product-data'
 
 type Props = {
   params: {
@@ -9,21 +9,24 @@ type Props = {
   }
 }
 
-export default function Page({ params }: Props) {
-  const { category } = params
-  if (!isCategory(category)) return notFound()
+export default async function Page({ params }: Props) {
+  const categoryName = params.category
+  const products = await api.categories.getProductsByCategoryName.query({
+    categoryName,
+  })
+  if (!isValidCategory(categoryName)) return notFound()
 
   return (
     <>
       <h2 className="full-width bg-eclipse-black p-8 text-center text-[1.75rem] font-bold uppercase leading-snug tracking-[2px] text-white">
-        {category}
+        {categoryName}
       </h2>
       <div className="pt-10 md:pt-20">
         <section className="grid gap-28">
-          {productsByCategory[category].map((product) => (
+          {products.map((product) => (
             <ProductPreview
               key={product.id}
-              category={category}
+              category={categoryName}
               name={product.name}
               isNew={product.isNew}
               description={product.description}
