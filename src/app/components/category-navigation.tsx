@@ -12,6 +12,7 @@ const headphonesThumbnailData = {
   width: 438,
   height: 422,
 }
+
 const speakersThumbnailData = {
   src: 'https://res.cloudinary.com/dhm0lpxko/image/upload/v1706459626/thumbnails/category-thumbnail-speakers_tguyrg.png',
   width: 438,
@@ -30,7 +31,10 @@ export default function CategoryNavigation({
 }: Props) {
   return (
     <nav
-      className={mergeClassNames('grid gap-4 md:grid-cols-3', className)}
+      className={mergeClassNames(
+        'grid gap-4 md:grid-cols-3 md:gap-3 lg:gap-8',
+        className,
+      )}
       onClickCapture={onCategoryClick}
     >
       <CategoryCard name="headphones" thumbnail={headphonesThumbnailData} />

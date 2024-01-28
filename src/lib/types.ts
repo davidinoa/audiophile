@@ -1,4 +1,4 @@
-import idToNameMap from '~/app/[category]/product-data'
+import { idToNameMap } from '~/app/[category]/product-data'
 import { CATEGORIES, type BREAKPOINTS } from './constants'
 
 export type Breakpoint = (typeof BREAKPOINTS)[number]

@@ -7,7 +7,7 @@ import {
   generateGalleryImageDataSet,
   productResponsiveImageSizes,
 } from '../[category]/[productName]/gallery-images'
-import idToNameMap from '../[category]/product-data'
+import { idToNameMap } from '../[category]/product-data'
 import ResponsiveImage from './shared/responsive-image'
 
 type Props = {
