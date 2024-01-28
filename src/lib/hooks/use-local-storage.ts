@@ -1,13 +1,9 @@
 import { useCallback, useEffect, useSyncExternalStore } from 'react'
 
-export default function useLocalStorage<T>(key: string, initialValue: T) {
+export default function useLocalStorage<T>(key: string, initialValue?: T) {
   const getSnapshot = () => getLocalStorageItem(key)
 
-  const store = useSyncExternalStore(
-    subscribe,
-    getSnapshot,
-    getLocalStorageServerSnapshot,
-  )
+  const store = useSyncExternalStore(subscribe, getSnapshot, () => undefined)
 
   const setState = useCallback(
     (value: T) => {
@@ -42,10 +38,6 @@ function getLocalStorageItem(key: string) {
 function subscribe(callback: () => void) {
   window.addEventListener('storage', callback)
   return () => window.removeEventListener('storage', callback)
-}
-
-function getLocalStorageServerSnapshot(): string | null {
-  throw new Error('useLocalStorage is client-only hook')
 }
 
 function setLocalStorageItem(key: string, value: unknown) {
