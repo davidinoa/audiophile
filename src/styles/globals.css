@@ -86,3 +86,7 @@ input[type='number'] {
   appearance: none;
   -moz-appearance: textfield;
 }
+
+picture img {
+  background-color: rgb(0 0 0 / 0.05);
+}
