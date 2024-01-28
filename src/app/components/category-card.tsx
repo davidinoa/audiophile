@@ -1,10 +1,11 @@
-import Image, { type StaticImageData } from 'next/image'
+import Image from 'next/image'
 import RightArrowIcon from '~/assets/svgs/icon-arrow-right.svg'
+import { type ExternalImageData } from '~/lib/types'
 import Link from './shared/link'
 
 type Props = {
   name: string
-  thumbnail: StaticImageData
+  thumbnail: ExternalImageData
 }
 
 export default function CategoryCard({ name, thumbnail }: Props) {
@@ -18,10 +19,9 @@ export default function CategoryCard({ name, thumbnail }: Props) {
       }}
     >
       <Image
-        height={150}
         src={thumbnail}
         alt="headphones category thumbnail"
-        className="z-10 col-start-1 row-span-2 row-start-1"
+        className="z-10 col-start-1 row-span-2 row-start-1 h-[150px] w-auto"
       />
       <div className="col-start-1 row-span-2 row-start-2 grid h-[10.3125rem] w-full place-items-center content-end gap-4 rounded-lg bg-frost-whisper pb-5 pt-20">
         <h3 className="tracking-[1px]text-sm-plus font-bold uppercase leading-snug tracking-[1px]">
