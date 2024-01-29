@@ -57,18 +57,14 @@ const cartRouter = createTRPCRouter({
           })
         }
 
-        // Calculate subtotal
         let subtotal = 0
         cart.cartItems.forEach((item) => {
           subtotal += item.quantity * item.product.price
         })
 
-        // Define shipping and tax rates
-        const shipping = 5000 // Flat $50 shipping
-        const taxRate = 0.08 // 8% tax
-        const tax = subtotal * taxRate
-
-        // Calculate total
+        const shipping = 5000
+        const TAX_RATE = 0.08
+        const tax = subtotal * TAX_RATE
         const total = subtotal + shipping + tax
 
         return {
@@ -109,11 +105,17 @@ const cartRouter = createTRPCRouter({
         })
 
         if (existingItem) {
-          await ctx.db.cartItem.update({
-            where: { id: existingItem.id },
-            data: { quantity },
-          })
-        } else {
+          if (quantity === 0) {
+            await ctx.db.cartItem.delete({
+              where: { id: existingItem.id },
+            })
+          } else {
+            await ctx.db.cartItem.update({
+              where: { id: existingItem.id },
+              data: { quantity },
+            })
+          }
+        } else if (quantity > 0) {
           await ctx.db.cartItem.create({
             data: { cartId, productId, quantity },
           })

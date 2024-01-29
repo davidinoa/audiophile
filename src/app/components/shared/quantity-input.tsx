@@ -8,7 +8,7 @@ type Props<T> = {
 }
 
 const STEP = 1
-const MIN_VALUE = 1
+const MIN_VALUE = 0
 const MAX_VALUE = 99
 
 export default function QuantityInput({
@@ -23,7 +23,9 @@ export default function QuantityInput({
         aria-label="Decrease quantity"
         isDisabled={value === MIN_VALUE || isLoading}
         onPress={() =>
-          onChange(value ? Math.max(MIN_VALUE, value - STEP) : MIN_VALUE)
+          onChange(
+            value !== null ? Math.max(MIN_VALUE, value - STEP) : MIN_VALUE,
+          )
         }
         className="absolute left-4 top-1/2 -translate-y-1/2 text-black/25 hover:text-copper-canyon disabled:cursor-not-allowed data-[pressed=true]:scale-100 [&:hover]:bg-black/5"
       >
@@ -65,7 +67,9 @@ export default function QuantityInput({
         aria-label="Increase quantity"
         isDisabled={value === MAX_VALUE || isLoading}
         onPress={() =>
-          onChange(value ? Math.min(MAX_VALUE, value + STEP) : MIN_VALUE)
+          onChange(
+            value !== null ? Math.min(MAX_VALUE, value + STEP) : MIN_VALUE,
+          )
         }
         className="absolute right-4 top-1/2 -translate-y-1/2 text-black/25 hover:text-copper-canyon disabled:cursor-not-allowed data-[pressed=true]:scale-100 [&:hover]:bg-black/5"
       >
