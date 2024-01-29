@@ -1,5 +1,5 @@
 import { type Category } from '~/lib/types'
-import { generateResponsiveImageData } from '~/lib/utils'
+import { convertValueToSlug, generateResponsiveImageData } from '~/lib/utils'
 import Button from './shared/button'
 import ResponsiveImage from './shared/responsive-image'
 
@@ -22,7 +22,7 @@ export default function ProductPreview({
   description,
   isNew = false,
 }: Props) {
-  const kebabProductName = name.split(' ').join('-').toLowerCase()
+  const kebabProductName = convertValueToSlug(name)
   const singularCategory = category === 'speakers' ? 'speaker' : category
 
   const imageData = generateResponsiveImageData({

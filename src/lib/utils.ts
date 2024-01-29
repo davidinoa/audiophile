@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { BREAKPOINTS, CLOUDINARY_BASE_URL } from './constants'
@@ -66,3 +65,6 @@ export const formatPhoneNumber = (input: string) => {
 
   return input
 }
+
+export const convertValueToSlug = (value: string) =>
+  value.split(' ').join('-').toLowerCase()
