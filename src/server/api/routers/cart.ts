@@ -9,7 +9,6 @@ const cartRouter = createTRPCRouter({
       const { cartId } = input
 
       try {
-        // Check if the cart exists
         const cart = await ctx.db.cart.findUnique({
           where: { id: cartId },
         })
@@ -21,7 +20,6 @@ const cartRouter = createTRPCRouter({
           })
         }
 
-        // Delete all items from the cart
         await ctx.db.cartItem.deleteMany({
           where: { cartId: cart.id },
         })
@@ -34,6 +32,7 @@ const cartRouter = createTRPCRouter({
         })
       }
     }),
+
   getCart: publicProcedure
     .input(z.object({ cartId: z.string() }))
     .query(async ({ input, ctx }) => {
@@ -58,7 +57,27 @@ const cartRouter = createTRPCRouter({
           })
         }
 
-        return cart
+        // Calculate subtotal
+        let subtotal = 0
+        cart.cartItems.forEach((item) => {
+          subtotal += item.quantity * item.product.price
+        })
+
+        // Define shipping and tax rates
+        const shipping = 5000 // Flat $50 shipping
+        const taxRate = 0.08 // 8% tax
+        const tax = subtotal * taxRate
+
+        // Calculate total
+        const total = subtotal + shipping + tax
+
+        return {
+          cartItems: cart.cartItems,
+          subtotal,
+          shipping,
+          tax,
+          total,
+        }
       } catch (error) {
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',
@@ -66,6 +85,7 @@ const cartRouter = createTRPCRouter({
         })
       }
     }),
+
   setItemQuantity: publicProcedure
     .input(
       z.object({
@@ -79,34 +99,28 @@ const cartRouter = createTRPCRouter({
         let { cartId } = input
         const { productId, quantity } = input
 
-        // Create a new cart if cartId is not provided
         if (!cartId) {
           const newCart = await ctx.db.cart.create({ data: {} })
           cartId = newCart.id
         }
 
-        // Check if the CartItem exists
         const existingItem = await ctx.db.cartItem.findFirst({
           where: { cartId, productId },
         })
 
         if (existingItem) {
-          // Update the quantity if it exists
           await ctx.db.cartItem.update({
             where: { id: existingItem.id },
             data: { quantity },
           })
         } else {
-          // Create a new CartItem if it doesn't exist
           await ctx.db.cartItem.create({
             data: { cartId, productId, quantity },
           })
         }
 
-        // Return the cartId for the frontend to save as a cookie
         return { cartId }
       } catch (error) {
-        // Handle specific error types or throw a generic error
         throw new TRPCError({
           code: 'INTERNAL_SERVER_ERROR',
           message: 'An error occurred while updating the cart',
