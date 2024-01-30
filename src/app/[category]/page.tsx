@@ -11,10 +11,10 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const categoryName = params.category
+  if (!isValidCategory(categoryName)) return notFound()
   const products = await api.categories.getProductsByCategoryName.query({
     categoryName,
   })
-  if (!isValidCategory(categoryName)) return notFound()
 
   return (
     <>
