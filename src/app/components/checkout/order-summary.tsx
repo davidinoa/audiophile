@@ -1,19 +1,12 @@
 import Image from 'next/image'
 import { CLOUDINARY_BASE_URL } from '~/lib/constants'
-import useLocalStorage from '~/lib/hooks/use-local-storage'
 import { convertValueToSlug, formatPrice } from '~/lib/utils'
 import { api } from '~/trpc/react'
 import Button from '../shared/button'
 
 export default function OrderSummary() {
-  const [cartId] = useLocalStorage<string>('cartId')
-
-  const cartQuery = api.cart.getCart.useQuery(
-    { cartId: cartId! },
-    { enabled: !!cartId },
-  )
-
-  if (!cartId || !cartQuery.data?.cartItems.length) return null
+  const cartQuery = api.cart.getCart.useQuery()
+  if (!cartQuery.data?.cartItems.length) return null
 
   if (cartQuery.isLoading) {
     return (
