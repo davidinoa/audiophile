@@ -17,6 +17,7 @@ export default function AddToCart({ productId }: Props) {
   return (
     <div className="flex items-center gap-4">
       <QuantityInput
+        minValue={1}
         value={quantity}
         onChange={setQuantity}
         isLoading={cartMutation.isLoading}
