@@ -10,6 +10,7 @@ export default function MobileMenu() {
   const toggleRef = useRef<() => void>()
   return (
     <Modal
+      id="mobile-menu"
       renderTrigger={(toggle) => {
         toggleRef.current = toggle
         return (
@@ -25,7 +26,7 @@ export default function MobileMenu() {
       }}
       classNames={{
         dialog:
-          'z-10 max-h-[calc(100vh-93px)] w-screen min-w-[22rem] rounded-b-lg px-6 py-8 md:px-10 md:py-14 top-[93px]',
+          'z-10 max-h-[calc(100vh-93px)] w-screen min-w-[22rem] rounded-b-lg px-6 py-8 md:px-10 md:py-14 top-[93px] overflow-auto',
       }}
     >
       <CategoryNavigation

@@ -7,6 +7,7 @@ import { mergeClassNames } from '~/lib/utils'
 import { disableContentInteraction, enableContentInteraction } from './utils'
 
 type ModalProps = {
+  id: string
   children: ReactNode
   renderTrigger: (toggle: () => void) => ReactNode
   classNames?: {
@@ -15,13 +16,28 @@ type ModalProps = {
 }
 
 export default function Modal({
+  id,
   children,
   classNames,
   renderTrigger,
 }: ModalProps) {
   const [isOpen, setIsOpen] = useState(false)
-  useEscapeKey(close)
   const dialogRef = useOutsideClick<HTMLDialogElement>(close)
+  const customEvent = new CustomEvent('dialog-open', { detail: { source: id } })
+
+  useEscapeKey(close)
+
+  useEffect(() => {
+    function handleDialogClose(e: CustomEvent<{ source: string }>) {
+      if (e.detail.source !== id) setIsOpen(false)
+    }
+
+    const eventListenerObject = { handleEvent: handleDialogClose }
+    document.addEventListener('dialog-open', eventListenerObject)
+    return () => {
+      document.removeEventListener('dialog-open', eventListenerObject)
+    }
+  }, [id])
 
   function close() {
     setIsOpen(false)
@@ -29,9 +45,9 @@ export default function Modal({
   }
 
   function open() {
-    if (isOpen) return
     setIsOpen(true)
     disableContentInteraction()
+    document.dispatchEvent(customEvent)
   }
 
   function toggle() {
@@ -39,29 +55,11 @@ export default function Modal({
     else open()
   }
 
-  useEffect(() => {
-    const mutationObserver = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        const { target } = mutation
-        if (target === dialogRef.current) return
-        if (!(target instanceof HTMLElement)) return
-        close()
-      })
-    })
-
-    mutationObserver.observe(document.body, {
-      attributes: true,
-      subtree: true,
-      attributeFilter: ['open'],
-    })
-
-    return () => mutationObserver.disconnect()
-  }, [dialogRef])
-
   return (
     <div>
       {renderTrigger(toggle)}
       <dialog
+        id={id}
         ref={dialogRef}
         tabIndex={-1}
         open={isOpen}
