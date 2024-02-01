@@ -1,24 +1,25 @@
 'use client'
 
 import { type ReactNode } from 'react'
-import { mergeClassNames } from '~/lib/utils'
+import CloseIcon from '~/assets/svgs/icon-close.svg'
+import Button from '../button'
 
 type ModalProps = {
   id: string
   isOpen: boolean
+  toggle: () => void
   children: ReactNode
   dialogRef: React.MutableRefObject<HTMLDialogElement | null>
-  classNames?: {
-    dialog: string
-  }
+  className?: string
 }
 
 export default function Modal({
   id,
   children,
-  classNames,
+  className,
   isOpen,
   dialogRef,
+  toggle,
 }: ModalProps) {
   return (
     <div>
@@ -28,8 +29,15 @@ export default function Modal({
         tabIndex={-1}
         open={isOpen}
         aria-modal="true"
-        className={mergeClassNames(classNames?.dialog)}
+        className={className}
       >
+        <Button
+          variant="icon"
+          className="absolute right-4 top-4 cursor-pointer text-black/50 hover:text-black/75"
+          onPress={toggle}
+        >
+          <CloseIcon className="h-6 w-6" />
+        </Button>
         {children}
       </dialog>
       <div

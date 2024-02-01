@@ -19,7 +19,7 @@ const styles = cva(
         secondaryInverted:
           'border border-black bg-black text-white hover:bg-transparent hover:text-black rounded-none',
         icon: 'bg-transparent p-1 data-[hover=true]:!opacity-80',
-        link: 'p-0 rounded-none bg-transparent hover:text-peachy-sunset capitalize font-medium text-sm-plus text-black/50',
+        link: 'p-0 rounded-none bg-transparent hover:text-peachy-sunset capitalize font-medium text-sm-plus text-black/50 ',
       },
     },
     defaultVariants: {
@@ -40,6 +40,7 @@ function BaseButton(
       ref={ref}
       href={href}
       as={href ? Link : 'button'}
+      disableRipple={variant === 'link'}
       className={mergeClassNames(styles({ variant }), className)}
     >
       {children}
