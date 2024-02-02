@@ -22,7 +22,11 @@ export default function Modal({
   toggle,
 }: ModalProps) {
   return (
-    <div>
+    <div
+      aria-hidden
+      hidden={!isOpen}
+      className="fixed inset-0 -z-10 max-h-screen overflow-auto bg-black/50 duration-300 animate-in fade-in fill-mode-forwards"
+    >
       <dialog
         id={id}
         ref={dialogRef}
@@ -39,13 +43,8 @@ export default function Modal({
         >
           <CloseIcon className="h-6 w-6" />
         </Button>
-        {children}
+        {isOpen ? children : null}
       </dialog>
-      <div
-        aria-hidden
-        hidden={!isOpen}
-        className="fixed inset-0 -z-10 bg-black/50 duration-300 animate-in fade-in fill-mode-forwards"
-      />
     </div>
   )
 }
