@@ -34,7 +34,7 @@ export default function QuantityInput({
             value !== null ? Math.max(MIN_VALUE, value - STEP) : MIN_VALUE,
           )
         }
-        className="absolute left-2 top-1/2 -translate-y-1/2 text-black/25 hover:text-copper-canyon disabled:cursor-not-allowed data-[pressed=true]:scale-100 md:left-4 [&:hover]:bg-black/5"
+        className="absolute left-1 top-1/2 -translate-y-1/2 text-black/25 hover:text-copper-canyon disabled:cursor-not-allowed data-[pressed=true]:scale-100 md:left-4 [&:hover]:bg-black/5"
       >
         <span className="w-[2ch] tracking-[-0.005px] ">-</span>
       </Button>
@@ -68,7 +68,7 @@ export default function QuantityInput({
           aria-busy={isLoading}
           disabled={isLoading}
           className={mergeClassNames(
-            'w-[120px] bg-frost-whisper px-10 py-4 text-center font-bold tabular-nums leading-none disabled:text-black/50',
+            'w-[120px] bg-frost-whisper px-6 py-4 text-center font-bold tabular-nums leading-none disabled:text-black/50 md:px-10',
             className,
           )}
         />
@@ -82,7 +82,7 @@ export default function QuantityInput({
             value !== null ? Math.min(MAX_VALUE, value + STEP) : minValue,
           )
         }
-        className="absolute right-2 top-1/2 -translate-y-1/2 text-black/25 hover:text-copper-canyon disabled:cursor-not-allowed data-[pressed=true]:scale-100 md:right-4 [&:hover]:bg-black/5"
+        className="absolute right-1 top-1/2 -translate-y-1/2 text-black/25 hover:text-copper-canyon disabled:cursor-not-allowed data-[pressed=true]:scale-100 md:right-4 [&:hover]:bg-black/5"
       >
         <span className="w-[2ch] tracking-[-0.005px]">+</span>
       </Button>

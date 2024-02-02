@@ -92,6 +92,60 @@ const cartRouter = createTRPCRouter({
     }
   }),
 
+  addItemToCart: publicProcedure
+    .input(
+      z.object({
+        productId: z.string(),
+        quantity: z.number().min(1), // Ensure at least one item is being added.
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      try {
+        let cartId = cookies().get('cartId')?.value
+
+        if (!cartId) {
+          const newCart = await createCart(ctx.db)
+          cartId = newCart.id
+        }
+
+        const existingItem = await ctx.db.cartItem.findFirst({
+          where: {
+            cartId,
+            productId: input.productId,
+          },
+        })
+
+        if (existingItem) {
+          await ctx.db.cartItem.update({
+            where: {
+              id: existingItem.id,
+            },
+            data: {
+              quantity: existingItem.quantity + input.quantity,
+            },
+          })
+        } else {
+          await ctx.db.cartItem.create({
+            data: {
+              cartId,
+              productId: input.productId,
+              quantity: input.quantity,
+            },
+          })
+        }
+
+        return {
+          cartId,
+          message: 'Item added to cart successfully',
+        }
+      } catch (error) {
+        throw new TRPCError({
+          code: 'INTERNAL_SERVER_ERROR',
+          message: 'An error occurred while adding the item to the cart',
+        })
+      }
+    }),
+
   setItemQuantity: publicProcedure
     .input(
       z.object({

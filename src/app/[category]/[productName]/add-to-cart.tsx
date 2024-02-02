@@ -12,7 +12,7 @@ type Props = {
 export default function AddToCart({ productId }: Props) {
   const apiUtils = api.useUtils()
   const [quantity, setQuantity] = useState<number | null>(1)
-  const cartMutation = api.cart.setItemQuantity.useMutation()
+  const cartMutation = api.cart.addItemToCart.useMutation()
 
   return (
     <div className="flex items-center gap-4">
