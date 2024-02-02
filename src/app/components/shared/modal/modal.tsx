@@ -33,8 +33,9 @@ export default function Modal({
       >
         <Button
           variant="icon"
-          className="absolute right-4 top-4 cursor-pointer text-black/50 hover:text-black/75"
+          aria-label="close modal"
           onPress={toggle}
+          className="absolute right-4 top-4 cursor-pointer text-black/50 hover:text-black/75"
         >
           <CloseIcon className="h-6 w-6" />
         </Button>

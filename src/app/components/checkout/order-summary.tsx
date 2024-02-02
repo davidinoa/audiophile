@@ -87,8 +87,8 @@ export default function OrderSummary() {
         ))}
       </ul>
       <table className="grid gap-6">
+        <caption>Cost Summary</caption>
         <thead className="sr-only">
-          <caption>Cost Summary</caption>
           <tr>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
