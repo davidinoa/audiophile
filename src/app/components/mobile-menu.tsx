@@ -18,7 +18,11 @@ export default function MobileMenu() {
         isOpen={isOpen}
         toggle={toggle}
         dialogRef={dialogRef}
-        className="top-[93px] z-10 max-h-[calc(100vh-93px)] w-screen min-w-[22rem] overflow-auto rounded-b-lg px-6 py-8 md:px-10 md:py-14"
+        classNames={{
+          backdrop: 'z-20',
+          dialog:
+            'translate-y-[0] top-[93px] z-10 max-h-[calc(100vh-93px)] w-screen min-w-[22rem] overflow-auto rounded-b-lg px-6 py-8 md:px-10 md:py-14',
+        }}
       >
         <CategoryNavigation
           onCategoryClick={({ target }) => {
