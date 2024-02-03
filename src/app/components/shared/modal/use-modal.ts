@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { flushSync } from 'react-dom'
 import useOutsideClick from '~/lib/hooks/use-outside-click'
 import useEscapeKey from '~/lib/hooks/useEscapeKey'
 import { disableContentInteraction, enableContentInteraction } from './utils'
@@ -27,7 +28,8 @@ export default function useModal(id: string) {
   }
 
   function open() {
-    setIsOpen(true)
+    flushSync(() => setIsOpen(true))
+    dialogRef.current?.focus()
     disableContentInteraction()
     document.dispatchEvent(customEvent)
   }
