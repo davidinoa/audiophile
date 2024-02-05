@@ -24,6 +24,7 @@ export default function AddToCart({ productId }: Props) {
       />
       <Button
         type="submit"
+        isDisabled={cartMutation.isLoading}
         onClick={() => {
           if (!quantity) return
           cartMutation.mutate(
