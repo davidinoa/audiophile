@@ -51,38 +51,48 @@ const cartRouter = createTRPCRouter({
         cartId = newCart.id
       }
 
-      const cart = await ctx.db.cart.findUnique({
-        where: { id: cartId },
-        include: {
-          cartItems: {
-            include: {
-              product: true,
+      try {
+        const cart = await ctx.db.cart.findUnique({
+          where: { id: cartId },
+          include: {
+            cartItems: {
+              include: {
+                product: true,
+              },
             },
           },
-        },
-      })
+        })
 
-      if (!cart) {
+        if (!cart) {
+          throw new TRPCError({
+            code: 'NOT_FOUND',
+            message: 'Cart not found',
+          })
+        }
+
+        let subtotal = 0
+        cart.cartItems.forEach((item) => {
+          subtotal += item.quantity * item.product.price
+        })
+
+        const shipping = SHIPPING_COST
+        const tax = subtotal * TAX_RATE
+        const total = subtotal + shipping + tax
+
+        return {
+          ...cart,
+          subtotal,
+          shipping,
+          tax,
+          total,
+        }
+      } catch (error) {
+        cookies().delete('cartId')
+
         throw new TRPCError({
           code: 'NOT_FOUND',
           message: 'Cart not found',
         })
-      }
-      let subtotal = 0
-      cart.cartItems.forEach((item) => {
-        subtotal += item.quantity * item.product.price
-      })
-
-      const shipping = SHIPPING_COST
-      const tax = subtotal * TAX_RATE
-      const total = subtotal + shipping + tax
-
-      return {
-        ...cart,
-        subtotal,
-        shipping,
-        tax,
-        total,
       }
     } catch (error) {
       throw new TRPCError({
@@ -96,7 +106,7 @@ const cartRouter = createTRPCRouter({
     .input(
       z.object({
         productId: z.string(),
-        quantity: z.number().min(1), // Ensure at least one item is being added.
+        quantity: z.number().min(1),
       }),
     )
     .mutation(async ({ ctx, input }) => {
