@@ -29,7 +29,7 @@ export default function Cart() {
       </div>
     )
 
-  const { cartItems, total } = cartQuery.data
+  const { cartItems, subtotal } = cartQuery.data
   const cartItemCount = cartItems.reduce((acc, item) => acc + item.quantity, 0)
   const isEmpty = cartItemCount === 0
 
@@ -85,10 +85,10 @@ export default function Cart() {
               <div>
                 <p className="flex items-center justify-between">
                   <span className="text-sm-plus font-normal uppercase leading-relaxed text-black/50">
-                    Total
+                    Subtotal
                   </span>
                   <span className="text-lg font-bold leading-normal">
-                    {formatPrice(total)}
+                    {formatPrice(subtotal)}
                   </span>
                 </p>
                 {!isEmpty && (
