@@ -6,11 +6,10 @@ import Button from '../shared/button'
 
 export default function OrderSummary() {
   const cartQuery = api.cart.getCart.useQuery()
-  if (!cartQuery.data?.cartItems.length) return null
 
   if (cartQuery.isLoading) {
     return (
-      <div className="my-40 grid animate-pulse gap-8 rounded-lg bg-white p-8">
+      <div className="grid h-fit animate-pulse gap-8 rounded-lg bg-white p-8 lg:w-[21.875rem]">
         <h2 className="text-lg font-bold uppercase leading-snug tracking-[1.285px]">
           Summary
         </h2>
@@ -50,7 +49,7 @@ export default function OrderSummary() {
   const { data } = cartQuery
 
   return (
-    <section className="my-40 grid gap-8 rounded-lg bg-white p-8 lg:max-w-[21.875rem]">
+    <section className="grid h-fit gap-8 rounded-lg bg-white p-8 lg:w-[21.875rem]">
       <h2 className="text-lg font-bold uppercase leading-snug tracking-[1.285px]">
         Summary
       </h2>
@@ -143,7 +142,9 @@ export default function OrderSummary() {
           </tr>
         </tfoot>
       </table>
-      <Button className="w-full">Continue & Pay</Button>
+      <Button type="submit" form="checkout-form" className="w-full">
+        Continue & Pay
+      </Button>
     </section>
   )
 }
