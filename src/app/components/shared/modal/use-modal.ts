@@ -4,7 +4,11 @@ import useOutsideClick from '~/lib/hooks/use-outside-click'
 import useEscapeKey from '~/lib/hooks/useEscapeKey'
 import { disableContentInteraction, enableContentInteraction } from './utils'
 
-export default function useModal(id: string) {
+type Options = {
+  onClose?: () => void
+}
+
+export default function useModal(id: string, options?: Options) {
   const [isOpen, setIsOpen] = useState(false)
   const dialogRef = useOutsideClick<HTMLDialogElement>(close)
   const customEvent = new CustomEvent('dialog-open', { detail: { source: id } })
@@ -25,6 +29,7 @@ export default function useModal(id: string) {
   function close() {
     setIsOpen(false)
     enableContentInteraction()
+    options?.onClose?.()
   }
 
   function open() {

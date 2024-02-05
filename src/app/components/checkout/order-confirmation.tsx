@@ -1,9 +1,7 @@
 import Image from 'next/image'
-import { useEffect } from 'react'
 import ConfirmationIcon from '~/assets/svgs/icon-order-confirmation.svg'
 import { CLOUDINARY_BASE_URL } from '~/lib/constants'
 import { convertValueToSlug, formatPrice } from '~/lib/utils'
-import { api } from '~/trpc/react'
 import type { RouterOutputs } from '~/trpc/shared'
 import Button from '../shared/button'
 import Modal from '../shared/modal/modal'
@@ -23,15 +21,6 @@ export default function OrderConfirmation({
   dialogRef,
   orderData,
 }: Props) {
-  const apiUtils = api.useUtils()
-  useEffect(
-    () =>
-      function invalidatePreviousCart() {
-        if (isOpen) return
-        apiUtils.cart.getCart.invalidate().catch(console.error)
-      },
-    [apiUtils, isOpen],
-  )
   if (!orderData) return null
   const { orderItems, total } = orderData
   const orderItemsCount = orderItems.length
