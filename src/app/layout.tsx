@@ -10,7 +10,6 @@ import Providers from './providers'
 export const metadata = {
   title: 'Audiophile',
   description: 'Audiophile e-commerce website',
-  icons: [{ rel: 'icon', url: '/favicon.ico' }],
 }
 
 export default function RootLayout({
