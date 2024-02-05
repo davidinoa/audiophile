@@ -1,6 +1,7 @@
 import { TRPCError } from '@trpc/server'
 import { cookies } from 'next/headers'
 import { z } from 'zod'
+import { SHIPPING_COST, TAX_RATE } from '~/lib/constants'
 import { createTRPCRouter, publicProcedure } from '../trpc'
 
 const orderRouter = createTRPCRouter({
@@ -84,11 +85,13 @@ const orderRouter = createTRPCRouter({
           })
         }
 
-        const total = order.orderItems.reduce(
+        const subtotal = order.orderItems.reduce(
           (acc, item) => acc + item.price * item.quantity,
           0,
         )
-
+        const shipping = SHIPPING_COST
+        const tax = subtotal * TAX_RATE
+        const total = subtotal + shipping + tax
         return { ...order, total }
       } catch (error) {
         console.error('Failed to get order:', error)

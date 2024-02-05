@@ -3,10 +3,8 @@ import { type DefaultArgs } from '@prisma/client/runtime/library'
 import { TRPCError } from '@trpc/server'
 import { cookies } from 'next/headers'
 import { z } from 'zod'
+import { SHIPPING_COST, TAX_RATE } from '~/lib/constants'
 import { createTRPCRouter, publicProcedure } from '../trpc'
-
-const SHIPPING_COST = 5000
-const TAX_RATE = 0.08
 
 const cartRouter = createTRPCRouter({
   clearCart: publicProcedure.mutation(async ({ ctx }) => {
