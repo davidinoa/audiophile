@@ -46,13 +46,13 @@ export default function OrderConfirmation({
       withFocusTrap
       classNames={{
         dialog:
-          'w-[min(calc(100%-3rem),25rem)] overflow-auto rounded-lg p-8 md:w-[25rem] top-1/2 -translate-y-1/2',
+          'w-[min(calc(100%-3rem),25rem)] overflow-auto rounded-lg p-8 md:p-12 md:min-w-[33.75rem] top-1/2 -translate-y-1/2',
       }}
     >
-      <div className="grid gap-6">
+      <div className="grid gap-6 md:gap-8">
         <ConfirmationIcon className="h-16 w-16" aria-hidden="true" />
-        <div className="grid gap-4">
-          <h2 className="text-2xl font-bold uppercase leading-[1.15] tracking-[0.85px]">
+        <div className="grid gap-4 md:gap-6">
+          <h2 className="text-2xl font-bold uppercase leading-[1.15] tracking-[0.85px] md:text-[2rem]">
             Thank you
             <br /> for your order
           </h2>
@@ -87,10 +87,14 @@ export default function OrderConfirmation({
                 </p>
               </div>
             </div>
-            <hr />
-            <p className="text-center text-xs font-bold leading-normal tracking-[-0.215px] text-black/50">
-              and {orderItemsCount} other item(s)
-            </p>
+            {orderItemsCount > 1 && (
+              <>
+                <hr />
+                <p className="text-center text-xs font-bold leading-normal tracking-[-0.215px] text-black/50">
+                  and {orderItemsCount - 1} other item(s)
+                </p>
+              </>
+            )}
           </div>
           <div className="grid gap-2 bg-black px-6 py-4">
             <h3 className="text-sm-plus font-normal uppercase text-white/50">
@@ -101,7 +105,7 @@ export default function OrderConfirmation({
             </p>
           </div>
         </div>
-        <Button href="/" className="w-full">
+        <Button href="/" className="w-full md:mt-6">
           Back to home
         </Button>
       </div>
