@@ -4,8 +4,8 @@ import Button from './shared/button'
 import ResponsiveImage from './shared/responsive-image'
 
 const imageSizes = {
-  mobile: { width: 654, height: 348 },
-  tablet: { width: 554, height: 348 },
+  mobile: { width: 750, height: 1200 },
+  tablet: { width: 1536, height: 1458 },
   desktop: { width: 2880, height: 1458 },
 }
 
@@ -45,7 +45,7 @@ export default function Hero() {
           fill: true,
           sizes: '100vw',
           alt: 'XX99 Mark II headphones',
-          className: 'object-cover object-bottom opacity-50',
+          className: 'object-cover object-bottom opacity-50 bg-black',
         }}
       />
     </section>
