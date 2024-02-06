@@ -1,10 +1,23 @@
-import desktopImage from '~/assets/images/desktop/hero.jpg'
-import mobileImage from '~/assets/images/mobile/hero.jpg'
-import tabletImage from '~/assets/images/tablet/hero.jpg'
+import { BREAKPOINTS, CLOUDINARY_BASE_URL } from '~/lib/constants'
+import type { ResponsiveImageData } from '~/lib/types'
 import Button from './shared/button'
 import ResponsiveImage from './shared/responsive-image'
 
+const imageSizes = {
+  mobile: { width: 654, height: 348 },
+  tablet: { width: 554, height: 348 },
+  desktop: { width: 2880, height: 1458 },
+}
+
 export default function Hero() {
+  const imageData = BREAKPOINTS.reduce((acc, breakpoint) => {
+    acc[breakpoint] = {
+      ...imageSizes[breakpoint],
+      src: `${CLOUDINARY_BASE_URL}/home/${breakpoint}/hero-${breakpoint}`,
+    }
+    return acc
+  }, {} as ResponsiveImageData)
+
   return (
     <section className="content-grid | relative m-auto h-[32rem] grid-rows-1 bg-black text-white md:h-[40rem]">
       <div className="relative z-10 m-auto grid h-full max-w-[22rem] content-center justify-items-center gap-6 text-center md:max-w-[24.75rem] lg:m-0 lg:justify-items-start lg:text-left">
@@ -25,13 +38,12 @@ export default function Hero() {
         </Button>
       </div>
       <ResponsiveImage
-        desktopImg={desktopImage}
-        tabletImg={tabletImage}
-        mobileImg={mobileImage}
+        desktopImg={imageData.desktop}
+        tabletImg={imageData.tablet}
+        mobileImg={imageData.mobile}
         commonImgProps={{
           fill: true,
           sizes: '100vw',
-          placeholder: 'blur',
           alt: 'XX99 Mark II headphones',
           className: 'object-cover object-bottom opacity-50',
         }}
