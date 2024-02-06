@@ -1,17 +1,30 @@
-import desktopImage from '~/assets/images/desktop/about-section.jpg'
-import mobileImage from '~/assets/images/mobile/about-section.jpg'
-import tabletImage from '~/assets/images/tablet/about-section.jpg'
+import { BREAKPOINTS, CLOUDINARY_BASE_URL } from '~/lib/constants'
+import type { ResponsiveImageData } from '~/lib/types'
 import ResponsiveImage from './shared/responsive-image'
 
+const imageSizes = {
+  mobile: { width: 654, height: 600 },
+  tablet: { width: 1378, height: 600 },
+  desktop: { width: 540, height: 588 },
+}
+
 export default function AboutSection() {
+  const imageData = BREAKPOINTS.reduce((acc, breakpoint) => {
+    acc[breakpoint] = {
+      ...imageSizes[breakpoint],
+      src: `${CLOUDINARY_BASE_URL}/home/${breakpoint}/about-section-${breakpoint}`,
+    }
+    return acc
+  }, {} as ResponsiveImageData)
+
   return (
     <section className="justify-items-center gap-y-8 pb-[7.5rem] pt-8">
       <div className="grid w-full grid-flow-dense place-items-center gap-10 md:gap-16 lg:grid-cols-[27.8125rem_minmax(0,1fr)] lg:gap-32">
         <ResponsiveImage
           className="w-full lg:col-start-2"
-          desktopImg={desktopImage}
-          tabletImg={tabletImage}
-          mobileImg={mobileImage}
+          desktopImg={imageData.desktop}
+          tabletImg={imageData.tablet}
+          mobileImg={imageData.mobile}
           commonImgProps={{
             alt: 'man listening to music on headphones',
             className:
