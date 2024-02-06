@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import ConfirmationIcon from '~/assets/svgs/icon-order-confirmation.svg'
+import ConfirmationIcon from '~/assets/icon-order-confirmation.svg'
 import { CLOUDINARY_BASE_URL } from '~/lib/constants'
 import { convertValueToSlug, formatPrice } from '~/lib/utils'
 import type { RouterOutputs } from '~/trpc/shared'

@@ -1,6 +1,6 @@
 'use client'
 
-import CartIcon from '~/assets/svgs/icon-cart.svg'
+import CartIcon from '~/assets/icon-cart.svg'
 import { FADE_OUT_DURATION_MS } from '~/lib/constants'
 import { formatPrice } from '~/lib/utils'
 import { api } from '~/trpc/react'

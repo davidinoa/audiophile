@@ -6,7 +6,7 @@ import yx1MobileImg from '~/assets/images/mobile/earphones-yx1.jpg'
 import zx7MobileImg from '~/assets/images/mobile/speaker-zx7.jpg'
 import yx1TabletImg from '~/assets/images/tablet/earphones-yx1.jpg'
 import zx7TabletImg from '~/assets/images/tablet/speaker-zx7.jpg'
-import circlesPattern from '~/assets/svgs/pattern-circles.svg?url'
+import circlesPattern from '~/assets/pattern-circles.svg?url'
 import Button from './shared/button'
 import ResponsiveImage from './shared/responsive-image'
 

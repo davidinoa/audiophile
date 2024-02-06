@@ -2,7 +2,7 @@
 
 import { type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
-import CloseIcon from '~/assets/svgs/icon-close.svg'
+import CloseIcon from '~/assets/icon-close.svg'
 import { mergeClassNames } from '~/lib/utils'
 import Button from '../button'
 import FocusTrap from './focust-trap'

@@ -1,7 +1,7 @@
-import FacebookIcon from '~/assets/svgs/icon-facebook.svg'
-import InstagramIcon from '~/assets/svgs/icon-instagram.svg'
-import TwitterIcon from '~/assets/svgs/icon-twitter.svg'
-import Logo from '~/assets/svgs/logo.svg'
+import FacebookIcon from '~/assets/icon-facebook.svg'
+import InstagramIcon from '~/assets/icon-instagram.svg'
+import TwitterIcon from '~/assets/icon-twitter.svg'
+import Logo from '~/assets/logo.svg'
 import MainNavigation from './main-navigation'
 import Link from './shared/link'
 

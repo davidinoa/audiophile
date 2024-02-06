@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import RightArrowIcon from '~/assets/svgs/icon-arrow-right.svg'
+import RightArrowIcon from '~/assets/icon-arrow-right.svg'
 import { type ExternalImageData } from '~/lib/types'
 import Link from './shared/link'
 

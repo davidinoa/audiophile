@@ -1,4 +1,4 @@
-import Logo from '~/assets/svgs/logo.svg'
+import Logo from '~/assets/logo.svg'
 import Cart from './cart/cart'
 import MainNavigation from './main-navigation'
 import MobileMenu from './mobile-menu'

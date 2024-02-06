@@ -1,6 +1,6 @@
 'use client'
 
-import HamburgerIcon from '~/assets/svgs/icon-hamburger.svg'
+import HamburgerIcon from '~/assets/icon-hamburger.svg'
 import CategoryNavigation from './category-navigation'
 import Button from './shared/button'
 import Modal from './shared/modal/modal'
