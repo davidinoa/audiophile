@@ -1,6 +1,6 @@
 <div style="display: grid; place-items: center; gap: 12px; margin-bottom: 2rem;">
   <a href="https://audiophile-di.vercel.app/">Live URL</a>
-  <img src="https://raw.githubusercontent.com/davidinoa/audiophile/main/src/assets/logo.svg" style="background:black; padding: 1rem;" />
+  <img src="https://raw.githubusercontent.com/davidinoa/audiophile/b66d9b3a088ca97d5bd79199c16364df01d7393c/src/assets/logo.svg" style="background-color:black; padding: 1rem;" />
 </div>
 
 This project presents an ecommerce platform dedicated to audio products, designed to streamline the shopping experience for audiophiles and casual listeners alike. Leveraging the acclaimed efficiency of modern web technologies, this application facilitates an intuitive and engaging shopping journey, from product discovery to checkout. The primary aim was to construct a responsive, user-friendly ecommerce site that caters to the needs of audio equipment enthusiasts by offering a wide range of products, detailed descriptions, and a hassle-free checkout process.
