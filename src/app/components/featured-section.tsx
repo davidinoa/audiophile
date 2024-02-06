@@ -1,14 +1,37 @@
 import Image from 'next/image'
-import yx1DesktopImg from '~/assets/images/desktop/earphones-yx1.jpg'
-import zx7DesktopImg from '~/assets/images/desktop/speaker-zx7.jpg'
-import speakerImage from '~/assets/images/desktop/speaker-zx9.png'
-import yx1MobileImg from '~/assets/images/mobile/earphones-yx1.jpg'
-import zx7MobileImg from '~/assets/images/mobile/speaker-zx7.jpg'
-import yx1TabletImg from '~/assets/images/tablet/earphones-yx1.jpg'
-import zx7TabletImg from '~/assets/images/tablet/speaker-zx7.jpg'
 import circlesPattern from '~/assets/pattern-circles.svg?url'
+import { BREAKPOINTS, CLOUDINARY_BASE_URL } from '~/lib/constants'
+import type { ResponsiveImageData } from '~/lib/types'
 import Button from './shared/button'
 import ResponsiveImage from './shared/responsive-image'
+
+const zx7ImageSizes = {
+  desktop: { width: 1110, height: 320 },
+  tablet: { width: 689, height: 320 },
+  mobile: { width: 654, height: 640 },
+}
+
+const yx1ImageSizes = {
+  desktop: { width: 540, height: 320 },
+  tablet: { width: 678, height: 640 },
+  mobile: { width: 654, height: 400 },
+}
+
+const zx7ImageData = BREAKPOINTS.reduce((acc, breakpoint) => {
+  acc[breakpoint] = {
+    ...zx7ImageSizes[breakpoint],
+    src: `${CLOUDINARY_BASE_URL}/home/${breakpoint}/featured-zx7-${breakpoint}`,
+  }
+  return acc
+}, {} as ResponsiveImageData)
+
+const yx1ImageData = BREAKPOINTS.reduce((acc, breakpoint) => {
+  acc[breakpoint] = {
+    ...yx1ImageSizes[breakpoint],
+    src: `${CLOUDINARY_BASE_URL}/home/${breakpoint}/featured-yx1-${breakpoint}`,
+  }
+  return acc
+}, {} as ResponsiveImageData)
 
 export default function FeaturedSection() {
   return (
@@ -23,8 +46,10 @@ export default function FeaturedSection() {
         }}
       >
         <Image
-          src={speakerImage}
+          src="https://res.cloudinary.com/dhm0lpxko/image/upload/v1707177952/home/desktop/featured-zx9-desktop.png"
           alt="ZX9 speaker"
+          width={756}
+          height={918}
           className="w-[10rem] md:w-[12.375rem] lg:-mb-4 lg:w-[23rem] lg:place-self-end "
         />
         <div className="grid max-w-[21.5rem] justify-items-center gap-6 lg:justify-items-start lg:place-self-start lg:py-32 lg:text-left">
@@ -43,9 +68,9 @@ export default function FeaturedSection() {
       </div>
       <div className="relative h-[20rem] overflow-hidden rounded-lg md:col-span-2">
         <ResponsiveImage
-          desktopImg={zx7DesktopImg}
-          tabletImg={zx7TabletImg}
-          mobileImg={zx7MobileImg}
+          desktopImg={zx7ImageData.desktop}
+          tabletImg={zx7ImageData.tablet}
+          mobileImg={zx7ImageData.mobile}
           commonImgProps={{
             fill: true,
             quality: 100,
@@ -64,9 +89,9 @@ export default function FeaturedSection() {
       </div>
       <div className="overflow-hidden rounded-lg">
         <ResponsiveImage
-          desktopImg={yx1DesktopImg}
-          tabletImg={yx1TabletImg}
-          mobileImg={yx1MobileImg}
+          desktopImg={yx1ImageData.desktop}
+          tabletImg={yx1ImageData.tablet}
+          mobileImg={yx1ImageData.mobile}
           commonImgProps={{
             quality: 100,
             alt: 'YX1 earphones',
