@@ -1,28 +1,36 @@
-# Create T3 App
+<div style="display: grid; place-items: center; gap: 12px; margin-bottom: 2rem;">
+  <a href="https://audiophile-di.vercel.app/">Live URL</a>
+  <img src="https://raw.githubusercontent.com/davidinoa/audiophile/main/src/assets/logo.svg" style="background:black; padding: 1rem;" />
+</div>
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+This project presents an ecommerce platform dedicated to audio products, designed to streamline the shopping experience for audiophiles and casual listeners alike. Leveraging the acclaimed efficiency of modern web technologies, this application facilitates an intuitive and engaging shopping journey, from product discovery to checkout. The primary aim was to construct a responsive, user-friendly ecommerce site that caters to the needs of audio equipment enthusiasts by offering a wide range of products, detailed descriptions, and a hassle-free checkout process.
 
-## What's next? How do I make an app with this?
+  <div style="height: 500px; overflow: clip; width: 100%">
+    <img src="https://res.cloudinary.com/dz209s6jk/image/upload/v1619786083/Challenges/swxkgbgbn1z5yixxqwjb.jpg" style="width: 100%; object-fit: cover;" />
+  </div>
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+Key to this project was the implementation of a tech stack that ensures a seamless, fast, and secure shopping experience. The site features a dynamic, responsive design that adapts to various screen sizes, ensuring that users enjoy optimal layout and functionality across all devices. Advanced functionalities, such as cart management, order summaries, and real-time form validations, are incorporated to enhance user interaction and satisfaction.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Features
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+The ecommerce site offers an array of features tailored to improve the shopping experience for audio products:
 
-## Learn More
+- Cart Management: Users can effortlessly add or remove products from their cart, as well as edit product quantities, ensuring a flexible and straightforward shopping experience.
+- Dynamic Checkout Process: The checkout form dynamically validates user input, providing instant feedback on missed or incorrect fields, thus streamlining the completion process.
+- Accurate Checkout Totals: The site automatically calculates checkout totals, including taxes and shipping, based on the items in the cart, offering transparency and reliability in pricing.
+- Order Confirmation Modal: After completing a purchase, users are greeted with an order confirmation modal displaying a summary of their order, enhancing the post-purchase experience.
+- Responsive Design: The site's design dynamically adjusts to the user's device screen size, ensuring an optimal viewing and interaction experience across desktop, tablet, and mobile.
+- Interactive Elements: All interactive elements, including buttons and product images, feature hover states, providing a tactile feel to user interactions.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Tech Stack
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+The development of this ecommerce site employed a cutting-edge tech stack, emphasizing performance, scalability, and developer efficiency:
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- Next.js (React & TypeScript): This combination offers a robust framework for building fast, scalable, and maintainable server-rendered React applications with the added benefits of TypeScript's type safety.
+- Tailwind CSS: Utilized for its utility-first approach, Tailwind CSS facilitates rapid UI development, allowing for custom, consistent styling across the platform.
+- tRPC with React Query: This setup enables type-safe API routes without the need for manual type definitions or schemas, integrated with React Query for efficient data fetching, caching, and state management.
+- Prisma: Chosen for its next-generation ORM capabilities for Node.js and TypeScript, Prisma simplifies database access, schema migrations, and data management.
+- React Hook Form: Employed for managing forms within the app, React Hook Form enhances the user input gathering process, offering efficient validation and error handling.
+- Zod: A TypeScript-first schema declaration and validation library, Zod is used for validating data shapes, ensuring robust, type-safe input validation throughout the application.
 
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+This architecture was meticulously designed to support the seamless addition of new features and scalability, with a keen focus on maintaining a clean, maintainable codebase for long-term project health.
